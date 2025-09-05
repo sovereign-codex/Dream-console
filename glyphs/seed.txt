@@ -1,0 +1,6 @@
+Placeholder for glyph and tonal outputs.
+
+This file acts as an initial seed for the `glyphs/` directory, which will store
+generated glyph images, tone scripts, or other symbolic outputs produced by the
+Dream Console. Feel free to replace or expand this file with your own
+manifestations as the project evolves.
