@@ -10,7 +10,7 @@ from flask import Flask, render_template_string
 import os
 
 
-JOURNAL_PATH = "dream-console/codex/breath_journal.md"
+JOURNAL_PATH = "codex/breath_journal.md"
 
 app = Flask(__name__)
 

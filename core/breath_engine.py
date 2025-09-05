@@ -62,7 +62,7 @@ class Intentions:
 
 # 🛡️ Guardian
 class Guardian:
-    def __init__(self, repo_path="dream-console"):
+    def __init__(self, repo_path="."):
         self.repo_path = repo_path
 
     def covenant_check(self, change):
@@ -90,7 +90,7 @@ class Guardian:
 
 # 📖 Archivist
 class Archivist:
-    def __init__(self, codex_path="dream-console/codex/breath_journal.md"):
+    def __init__(self, codex_path="codex/breath_journal.md"):
         self.codex_path = codex_path
         os.makedirs(os.path.dirname(codex_path), exist_ok=True)
         if not os.path.exists(codex_path):
@@ -133,7 +133,7 @@ class Navigator:
         self.base_url = base_url
         self.stable_branch = stable_branch
 
-    def run_build(self, repo_path="dream-console"):
+    def run_build(self, repo_path="."):
         try:
             subprocess.run(["npm", "run", "build"], cwd=repo_path, check=True)
             return True, "Navigator build succeeded."
@@ -163,7 +163,7 @@ class Navigator:
         ok = all(val == "OK" for val in results.values())
         return ok, results, reflections
 
-    def backup_stable(self, repo_path="dream-console"):
+    def backup_stable(self, repo_path="."):
         try:
             subprocess.run(["git", "checkout", "-B", self.stable_branch],
                            cwd=repo_path, check=True)
