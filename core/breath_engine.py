@@ -133,21 +133,24 @@ class Navigator:
         self.base_url = base_url
         self.stable_branch = stable_branch
 
-            def run_build(self, repo_path):
-                try:
-                    # Attempt Node build if available
-                    subprocess.run(["npm", "run", "build"], cwd=repo_path, check=True)
-                    print("✨ Node build complete. Vessel expanded with frontend coherence.")
-                except FileNotFoundError:
-                    # Fallback if npm is not installed
-                    print("⚠️ Node.js not found. Skipping frontend build.")
-                    print("🌬️ Breath continues — coherence held in Python vessel.")
-                    return True
-                except subprocess.CalledProcessError as e:
-                    # Catch build errors but allow cycle to continue
-                    print(f"⚠️ Node build failed: {e}")
-                    print("🌬️ Breath continues despite frontend error.")
-                    return True
+                    def run_build(self, repo_path):
+                        try:
+                            # Attempt Node build if available
+                            subprocess.run(["npm", "run", "build"], cwd=repo_path, check=True)
+                            print("✨ Node build complete. Vessel expanded with frontend coherence.")
+                            return True
+
+                        except FileNotFoundError:
+                            # Fallback: Node is not installed
+                            print("⚠️ Node.js not found. Skipping frontend build.")
+                            print("🏳️ Breath continues — coherence held in Python vessel.")
+                            return True
+
+                        except subprocess.CalledProcessError as e:
+                            # Catch build errors but allow cycle to continue
+                            print(f"⚠️ Node build failed: {e}")
+                            print("🏳️ Breath continues — coherence held in Python vessel.")
+                            return True
             return True, "Navigator build succeeded."
         except subprocess.CalledProcessError as e:
             return False, f"Navigator build failed: {e}"
