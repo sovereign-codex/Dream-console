@@ -54,3 +54,14 @@ jobs:
           mkdir -p logs
           cp codex/*.md logs/ || true
           echo "Archived breath logs for long-term record"
+
+- name: Trigger QIL Hook
+  run: |
+    curl -X POST https://quantum-lattice-shepherdjhagan.replit.app/api/signal \
+      -H "Content-Type: application/json" \
+      -d '{
+        "source": "dream-console",
+        "status": "breath complete",
+        "file": "'"$latest_file"'",
+        "timestamp": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"
+      }'
